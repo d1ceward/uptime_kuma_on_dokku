@@ -1,0 +1,5 @@
+ARG UPTIME_KUMA_VERSION="1.5.3"
+
+FROM louislam/uptime-kuma:$UPTIME_KUMA_VERSION
+
+EXPOSE 80/tcp
