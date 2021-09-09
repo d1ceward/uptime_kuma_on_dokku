@@ -44,6 +44,15 @@ To get the routing working, we need to apply a few settings. First we set the do
 dokku domains:set uptime-kuma uptime.example.com
 ```
 
+## Persistent storage
+
+To persists user uploads (e.g. avatars) between restarts, create a folder on the host machine and tell Dokku to mount it to the app container.
+
+```bash
+sudo mkdir -p /var/lib/dokku/data/storage/uptime-kuma
+dokku storage:mount uptime-kuma /var/lib/dokku/data/storage/uptime-kuma:/app/data
+```
+
 ## Push Uptime Kuma to Dokku
 
 ### Grabbing the repository
