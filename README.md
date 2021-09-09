@@ -36,14 +36,6 @@ Log onto your Dokku Host to create the Uptime Kuma app:
 dokku apps:create uptime-kuma
 ```
 
-## Domain setup
-
-To get the routing working, we need to apply a few settings. First we set the domain.
-
-```bash
-dokku domains:set uptime-kuma uptime.example.com
-```
-
 ## Persistent storage
 
 To persists user uploads (e.g. avatars) between restarts, create a folder on the host machine and tell Dokku to mount it to the app container.
@@ -85,6 +77,14 @@ Now we can push Uptime Kuma to Dokku (_before_ moving on to the [next part](#dom
 
 ```bash
 git push dokku master
+```
+
+## Domain setup
+
+To get the routing working, we need to apply a few settings. First we set the domain.
+
+```bash
+dokku domains:set uptime-kuma uptime.example.com
 ```
 
 ## SSL certificate
