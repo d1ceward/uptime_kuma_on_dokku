@@ -10,16 +10,16 @@
 
 ### What is Uptime Kuma?
 
-Uptime Kuma is a self-hosted monitoring tool like "Uptime Robot".
+[Uptime Kuma](https://github.com/louislam/uptime-kuma) is a self-hosted monitoring tool like "Uptime Robot".
 
 ### What is Dokku?
 
-[Dokku](http://dokku.viewdocs.io/dokku/) is the smallest PaaS implementation you've ever seen - _Docker
+[Dokku](http://dokku.viewdocs.io/dokku) is the smallest PaaS implementation you've ever seen - _Docker
 powered mini-Heroku_.
 
 ### Requirements
 
-* A working [Dokku host](http://dokku.viewdocs.io/dokku/getting-started/installation/)
+* A working [Dokku host](http://dokku.viewdocs.io/dokku/getting-started/installation)
 
 # Setup
 
@@ -90,7 +90,7 @@ git push dokku master
 ## SSL certificate
 
 Last but not least, we can go an grab the SSL certificate from [Let's
-Encrypt](https://letsencrypt.org/).
+Encrypt](https://letsencrypt.org).
 
 ```bash
 # Install letsencrypt plugin
