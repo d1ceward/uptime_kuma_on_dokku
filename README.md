@@ -62,13 +62,13 @@ First clone this repository onto your machine.
 #### Via SSH
 
 ```bash
-git clone git@github.com:D1ceWard/uptime_kuma_on_dokku.git
+git clone git@github.com:d1ceward/uptime_kuma_on_dokku.git
 ```
 
 #### Via HTTPS
 
 ```bash
-git clone https://github.com/D1ceWard/uptime_kuma_on_dokku.git
+git clone https://github.com/d1ceward/uptime_kuma_on_dokku.git
 ```
 
 ### Set up git remote
@@ -100,7 +100,7 @@ dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git
 dokku config:set --no-restart uptime-kuma DOKKU_LETSENCRYPT_EMAIL=you@example.com
 
 # Generate certificate
-dokku letsencrypt uptime-kuma
+dokku letsencrypt:enable uptime-kuma
 ```
 
 ## Wrapping up
