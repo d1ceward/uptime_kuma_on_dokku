@@ -36,7 +36,7 @@ Log onto your Dokku Host to create the Uptime Kuma app:
 dokku apps:create uptime-kuma
 ```
 
-## Domain setup
+## Domain
 
 To get the routing working, we need to apply a few settings. First we set the domain.
 
@@ -59,29 +59,21 @@ dokku storage:mount uptime-kuma /var/lib/dokku/data/storage/uptime-kuma:/app/dat
 
 First clone this repository onto your machine.
 
-#### Via SSH
-
 ```bash
+# Via SSH
 git clone git@github.com:d1ceward/uptime_kuma_on_dokku.git
-```
 
-#### Via HTTPS
-
-```bash
+# Via HTTPS
 git clone https://github.com/d1ceward/uptime_kuma_on_dokku.git
 ```
 
-### Set up git remote
-
-Now you need to set up your Dokku server as a remote.
+### Set up your Dokku server as a Git remote
 
 ```bash
 git remote add dokku dokku@example.com:uptime-kuma
 ```
 
-### Push Uptime Kuma
-
-Now we can push Uptime Kuma to Dokku (_before_ moving on to the [next part](#domain-and-ssl-certificate)).
+### Push Uptime Kuma to Dokku
 
 ```bash
 git push dokku master
@@ -106,3 +98,30 @@ dokku letsencrypt:enable uptime-kuma
 ## Wrapping up
 
 Your Uptime Kuma instance should now be available on [https://uptime.example.com](https://uptime.example.com).
+
+### Possible issue with proxy ports mapping
+
+If the Plausible instance is not available at the address https://plausible.example.com check the return of this command :
+```bash
+dokku proxy:ports plausible
+```
+
+```bash
+### Valid return
+-----> Port mappings for plausible
+    -----> scheme  host port  container port
+    http           80         5000
+
+### Invalid return
+-----> Port mappings for plausible
+    -----> scheme  host port  container port
+    http           5000       5000
+```
+
+If the return is not the expected one, execute this command :
+
+```bash
+dokku proxy:ports-set plausible http:80:5000
+```
+
+If the return of the command was valid and Plausible is still not available, feel free to fill an issue in the issue tracker.
