@@ -1,5 +1,8 @@
 # Pull upstream changes
+echo -e "\033[0;32m====>\033[0m Pull origin..."
 git pull
+
+echo -e "\033[0;32m====>\033[0m Initial check..."
 
 # Get current release name
 CURRENT_RELEASE=$(git tag | tail -1)
@@ -8,11 +11,12 @@ CURRENT_RELEASE=$(git tag | tail -1)
 RELEASE=$(curl -s https://api.github.com/repos/louislam/uptime-kuma/tags | jq | grep -o '"[0-9]*\.[0-9]*\.[0-9]*"'| head -1 | sed 's/"//g')
 
 # Exit script if already up to date
-if [ "v${RELEASE}" = $CURRENT_RELEASE ]; then
+if [ $RELEASE = $CURRENT_RELEASE ]; then
+  echo -e "\033[0;32m=>\033[0m Already up to date..."
   exit 0
 fi
 
-# Replace "from" line in dockerfile with the new release
+# Replace "ARG" line in dockerfile with the new release
 sed -i "s#ARG UPTIME_KUMA_VERSION.*#ARG UPTIME_KUMA_VERSION=\"${RELEASE}\"#" Dockerfile
 
 # Replace README link to uptime kuma release
