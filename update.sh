@@ -11,7 +11,7 @@ CURRENT_RELEASE=$(git tag --sort=committerdate | tail -1)
 RELEASE=$(curl -s https://api.github.com/repos/louislam/uptime-kuma/tags | jq | grep -o '"[0-9]*\.[0-9]*\.[0-9]*"'| head -1 | sed 's/"//g')
 
 # Exit script if already up to date
-if [ $RELEASE = $CURRENT_RELEASE ]; then
+if [ "v${RELEASE}" = $CURRENT_RELEASE ]; then
   echo -e "\033[0;32m=>\033[0m Already up to date..."
   exit 0
 fi
