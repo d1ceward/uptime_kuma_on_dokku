@@ -5,7 +5,7 @@ git pull
 echo -e "\033[0;32m====>\033[0m Initial check..."
 
 # Get current release name
-CURRENT_RELEASE=$(git tag | tail -1)
+CURRENT_RELEASE=$(git tag --sort=committerdate | tail -1)
 
 # Get lastest release name
 RELEASE=$(curl -s https://api.github.com/repos/louislam/uptime-kuma/tags | jq | grep -o '"[0-9]*\.[0-9]*\.[0-9]*"'| head -1 | sed 's/"//g')
