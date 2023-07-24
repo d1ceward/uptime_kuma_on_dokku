@@ -89,7 +89,7 @@ Encrypt](https://letsencrypt.org).
 dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git
 
 # Set certificate contact email
-dokku config:set --no-restart uptime-kuma DOKKU_LETSENCRYPT_EMAIL=you@example.com
+dokku letsencrypt:set uptime-kuma email you@example.com
 
 # Generate certificate
 dokku letsencrypt:enable uptime-kuma
